@@ -70,6 +70,10 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Images")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
@@ -185,6 +189,10 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<DateTime>("Birthday")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Name")
                         .IsRequired()

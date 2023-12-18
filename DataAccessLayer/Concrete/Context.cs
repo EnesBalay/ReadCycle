@@ -7,7 +7,7 @@ namespace DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
-            optionBuilder.UseMySql("server=sql.freedb.tech;port=3306;database=freedb_ReadCycleDb;user=freedb_readCycleUser;password=FmaMqAFRVu!Qw73;", new MySqlServerVersion(new Version(8, 0, 31)));
+            optionBuilder.UseMySql("server=sql.freedb.tech;port=3306;database=freedb_ReadCycleDb;user=freedb_readCycleUser;password=h*e#Q5Q46bW2swD;", new MySqlServerVersion(new Version(8, 0, 31)));
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Book> Books { get; set; }

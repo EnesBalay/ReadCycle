@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20231217143720_AdiGuncelleme")]
-    partial class AdiGuncelleme
+    [Migration("20231218183441_first")]
+    partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -69,6 +69,10 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Images")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -187,6 +191,10 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<DateTime>("Birthday")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Name")
                         .IsRequired()
