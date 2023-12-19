@@ -1,41 +1,48 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>ReadCycle - İkinci El Kitap Alım Satım</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>ReadCycle - İkinci El Kitap Alım Satım</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/price-range.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/prettyPhoto.css" rel="stylesheet">
+	<link href="css/price-range.css" rel="stylesheet">
+	<link href="css/animate.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
 	<link href="css/responsive.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->       
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-    <!-- plugins:css -->
-    <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <!-- End layout styles -->
-    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+	<link rel="shortcut icon" href="images/ico/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+	<!-- plugins:css -->
+	<link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
+	<link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
+	<!-- endinject -->
+	<!-- Plugin css for this page -->
+	<!-- End plugin css for this page -->
+	<!-- inject:css -->
+	<!-- endinject -->
+	<!-- Layout styles -->
+	<link rel="stylesheet" href="/assets/css/style.css">
+	<!-- End layout styles -->
+	<link rel="shortcut icon" href="/assets/images/favicon.ico" />
 </head>
- <body>
-     <header id="header"><!--header-->
+
+<body style="
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+">
+	<header id="header"><!--header-->
 		<div class="header_top"><!--header_top-->
 			<div class="container">
 				<div class="row">
@@ -61,15 +68,18 @@
 				</div>
 			</div>
 		</div><!--/header_top-->
-		
+
 		<div class="header-middle"><!--header-middle-->
 			<div class="container">
-				<div class="row">
+				<div class="row" style="
+    align-items: center;
+    display: flex;
+">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="images/404/Read-Cycle-Logo.jpg" width="500" height="150" alt="" /></a>
+							<a href="index.html"><img src="images/logo.png" alt="read cycle logo" /></a>
 						</div>
-						
+
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
@@ -83,13 +93,14 @@
 				</div>
 			</div>
 		</div><!--/header-middle-->
-	
+
 		<div class="header-bottom"><!--header-bottom-->
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-9">
 						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<button type="button" class="navbar-toggle" data-toggle="collapse"
+								data-target=".navbar-collapse">
 								<span class="sr-only">Toggle navigation</span>
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
@@ -99,14 +110,14 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.html">AnaSayfa</a></li>
-								<li><a href="#">İlanlar</a></li> 
+								<li><a href="#">İlanlar</a></li>
 								<li><a href="contact-us.html">İletişim</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-sm-3">
 						<div class="search_box pull-right">
-							<input type="text" placeholder=""/>
+							<input type="text" placeholder="" />
 						</div>
 					</div>
 				</div>
@@ -114,8 +125,8 @@
 		</div><!--/header-bottom-->
 	</header><!--/header-->
 
-     @RenderBody()
-	 <footer id="footer"><!--Footer-->
+	@RenderBody()
+	<footer id="footer"><!--Footer-->
 		<div class="footer-widget">
 			<div class="container">
 				<div class="row">
@@ -170,39 +181,40 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
-				
+
 				</div>
 			</div>
 		</div>
-		
+
 	</footer><!--/Footer-->
-    <!-- container-scroller -->
-    <!-- plugins:js -->
-    <script src="/assets/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <script src="/assets/vendors/chart.js/Chart.min.js"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
-    <script src="/assets/js/off-canvas.js"></script>
-    <script src="/assets/js/hoverable-collapse.js"></script>
-    <script src="/assets/js/misc.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
-    <script src="/assets/js/sweetalert.min.js"></script>
-    @*<script src="/assets/js/dashboard.js"></script>*@
-    <script src="/assets/js/todolist.js"></script>
-    <script src="/js/site.js"></script>
-	 <script src="js/jquery.js"></script>
+	<!-- container-scroller -->
+	<!-- plugins:js -->
+	<script src="/assets/vendors/js/vendor.bundle.base.js"></script>
+	<!-- endinject -->
+	<!-- Plugin js for this page -->
+	<script src="/assets/vendors/chart.js/Chart.min.js"></script>
+	<!-- End plugin js for this page -->
+	<!-- inject:js -->
+	<script src="/assets/js/off-canvas.js"></script>
+	<script src="/assets/js/hoverable-collapse.js"></script>
+	<script src="/assets/js/misc.js"></script>
+	<!-- endinject -->
+	<!-- Custom js for this page -->
+	<script src="/assets/js/sweetalert.min.js"></script>
+	@*<script src="/assets/js/dashboard.js"></script>*@
+	<script src="/assets/js/todolist.js"></script>
+	<script src="/js/site.js"></script>
+	<script src="js/jquery.js"></script>
 	<script src="js/price-range.js"></script>
-    <script src="js/jquery.scrollUp.min.js"></script>
+	<script src="js/jquery.scrollUp.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/main.js"></script>
-    <!-- End custom js for this page -->
+	<script src="js/jquery.prettyPhoto.js"></script>
+	<script src="js/main.js"></script>
+	<!-- End custom js for this page -->
 </body>
+
 </html>
