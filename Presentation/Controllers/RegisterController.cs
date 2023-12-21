@@ -42,7 +42,7 @@ namespace Presentation.Controllers
                 user.AccountType = "User";
                 userManager.Add(user);
                 ViewBag.RegisterSuccess = "Kayıt Başarılı";
-                return View();
+                return RedirectToAction("Index","Login");
             }
             else
             {

@@ -1,12 +1,13 @@
-﻿<section id="form"><!--form-->
+﻿@model EntityLayer.Concrete.User
+<section id="form"><!--form-->
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-4 col-sm-offset-1">
 				<div class="login-form"><!--login form-->
 					<h2>Hesabınızla giriş yapın</h2>
-					<form action="#">
-						<input type="email" placeholder="E-mail Adresi" />
-						<input type="text" placeholder="Şifre" />
+					<form method="post"  action="#">
+						<input type="email" asp-for="EmailAddress" placeholder="E-mail Adresi" />
+						<input type="text" asp-for="Password" placeholder="Şifre" />
 						<span>
 							<input type="checkbox" class="checkbox">
 							Beni Hatırla !
@@ -21,11 +22,11 @@
 			<div class="col-sm-4">
 				<div class="signup-form"><!--sign up form-->
 					<h2>Bir hesabınız yok mu ?</h2>
-					<form action="#">
-						<input type="text" placeholder="Ad Soyad" />
-						<input type="text" placeholder="Telefon Numarası" />
-						<input type="email" placeholder="E-Mail Adresi" />
-						<input type="password" placeholder="Şifre" />
+					<form method="post" action="/Register/Index">
+						<input type="text" asp-for="Name" placeholder="Ad Soyad" />
+						<input type="text" asp-for="PhoneNumber" placeholder="Telefon Numarası" />
+						<input type="email" asp-for="EmailAddress" placeholder="E-Mail Adresi" />
+						<input type="password" asp-for="Password" placeholder="Şifre" />
 						<button type="submit" class="btn btn-default">Kayıt Ol</button>
 					</form>
 				</div><!--/sign up form-->
