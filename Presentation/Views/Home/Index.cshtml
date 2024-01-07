@@ -1,13 +1,17 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-
-@await Component.InvokeAsync("Slider")
-@await Component.InvokeAsync("FeaturesItems")
-@await Component.InvokeAsync("CategoryProducts")
-<div class="col-sm-9 padding-right">
-@await Component.InvokeAsync("CategoryTab")
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            @await Component.InvokeAsync("CategoryProducts")
+        </div>
+        <div class="col-sm-9 padding-right">
+            @await Component.InvokeAsync("FeaturesItems")
+            @await Component.InvokeAsync("CategoryTab")
+            @await Component.InvokeAsync("RecommendedItems")
+        </div>
+    </div>
 </div>
 
 

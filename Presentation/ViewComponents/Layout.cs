@@ -22,4 +22,5 @@ namespace Presentation.ViewComponents
     public class FeaturesItems : ViewComponent { public IViewComponentResult Invoke() { return View(); } }
     public class CategoryProducts : ViewComponent { public IViewComponentResult Invoke() { return View(); } }
     public class CategoryTab:ViewComponent { public IViewComponentResult Invoke() { return View(); } }
+    public class RecommendedItems:ViewComponent { public IViewComponentResult Invoke() { return View(); } }
 }
