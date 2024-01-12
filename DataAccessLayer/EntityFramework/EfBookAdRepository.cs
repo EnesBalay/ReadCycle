@@ -12,6 +12,17 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfBookAdRepository : GenericRepository<BookAd>, IBookAdDal
     {
-    
+        public List<BookAd> GetBookAdsBySearch(string search)
+        {
+            using var c = new Context();
+            return c.BookAds.Where(x => x.Title.ToLower().Contains(search.ToLower())).ToList();
+        }
+
+        public BookAd GetBookAdWithIdentityName(string title)
+        {
+            using var c = new Context();
+            return c.BookAds.FirstOrDefault(x => x.Title == title);
+        }
+
     }
 }
