@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BussinessLayer.Concrete
 {
-    internal class MessageManager : IMessageService
+    public class MessageManager : IMessageService
     {
         IMessageDal _messageDal;
         public MessageManager(IMessageDal messageDal)
