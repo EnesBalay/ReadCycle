@@ -10,8 +10,9 @@ namespace Presentation.Controllers
         BookAdManager bookAdManager = new BookAdManager(new EfBookAdRepository());
         public IActionResult Index(int id)
         {
-            var values=bookAdManager.GetById(id);
-            return View(values);
+            Console.WriteLine(id);
+            var data=bookAdManager.GetById(id);
+            return View(data);
         }
         
     }
