@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BussinessLayer.Abstract
 {
-    internal interface IBookAdService : IGenericService<BookAd>
+    public interface IBookAdService : IGenericService<BookAd>
     {
         public BookAd GetBookAdByTitle(String title);
         public List<BookAd> GetBookAdBySearch(String search);
