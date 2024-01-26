@@ -1,3 +1,4 @@
+using EntityLayer.Abstract;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
 {
-    public class Writer
+    public class Writer : Base
     {
         [Key]
         public int Id { get; set; }
