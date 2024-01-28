@@ -20,7 +20,18 @@ namespace Presentation.ViewComponents
     }
     public class Slider : ViewComponent { public IViewComponentResult Invoke() { return View(); } }
     public class FeaturesItems : ViewComponent { public IViewComponentResult Invoke() { return View(); } }
-    public class CategoryProducts : ViewComponent { public IViewComponentResult Invoke() { return View(); } }
+    public class CategoryProducts : ViewComponent { 
+
+        public IViewComponentResult Invoke() { 
+
+            return View(); } 
+    }    
+    public class Writers : ViewComponent { 
+
+        public IViewComponentResult Invoke() { 
+
+            return View(); } 
+    }
     public class CategoryTab : ViewComponent
     {
         public IViewComponentResult Invoke()

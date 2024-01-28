@@ -1,0 +1,91 @@
+﻿@model List<EntityLayer.Concrete.Message>
+@section Scripts {
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/chat.js"></script>
+}
+<style>
+    .message-container {
+        height: 400px;
+        overflow-y: scroll;
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+
+    .message {
+        margin-bottom: 10px;
+    }
+
+        .message .sender {
+            font-weight: bold;
+        }
+
+        .message .time {
+            color: #999;
+            font-size: 0.9em;
+        }
+
+    .input-group-addon {
+        cursor: pointer;
+    }
+
+    .nav-tabs-vertical {
+        border-bottom: none;
+    }
+
+        .nav-tabs-vertical > li {
+            display: block;
+            margin-bottom: 5px;
+            width: 100%;
+        }
+
+            .nav-tabs-vertical > li > a {
+                border: none;
+                border-radius: 0;
+                text-align: left;
+            }
+
+    h3 {
+        margin-top: 0;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="nav nav-tabs nav-tabs-vertical">
+                <li class="active"><a data-toggle="tab" href="#user1">User 1</a></li>
+                <li><a data-toggle="tab" href="#user2">User 2</a></li>
+                <!-- Add more users as needed -->
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <div class="tab-content">
+                <div id="user1" class="tab-pane fade in active">
+                    <input type="text" class="hide userInput" value="Ali" />
+                    <h3>User 1 Messages</h3>
+                    <div class="message-container">
+                        <ul class="messagesList"></ul>
+                        <!-- User 1's messages go here -->
+                    </div>
+                </div>
+                <div id="user2" class="tab-pane fade">
+                    <input type="text" id="userInput" value="Veli" class="hide userInput" />
+                    <h3>User 2 Messages</h3>
+                    <div class="message-container">
+                        <ul class="messagesList"></ul>
+                        <!-- User 2's messages go here -->
+                    </div>
+                </div>
+                <!-- Add more tab-panes for additional users -->
+            </div>
+        </div>
+    </div>
+    <div class="input-group">
+        <input type="text" id="messageInput" class="form-control" placeholder="Type your message...">
+        <span id="sendButton" class="input-group-addon">Send</span>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</div>
