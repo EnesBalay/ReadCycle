@@ -1,6 +1,7 @@
 ﻿using BussinessLayer.Abstract;
 using BussinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Controllers
@@ -12,6 +13,15 @@ namespace Presentation.Controllers
         {
             var data=bookAdManager.GetById(id);
             return View(data);
+        }
+        public IActionResult GetAllProduct()
+        {
+            var data = bookAdManager.GetListAll();
+            return View(data);
+        }
+        public IActionResult AddProduct()
+        {
+            return View();
         }
         
     }
