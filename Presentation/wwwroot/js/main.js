@@ -28,3 +28,42 @@ $(document).ready(function(){
 		});
 	});
 });
+
+
+function LoginRegisterSection() {
+    let form = document.getElementById("registerForm");
+    var elements = form.elements;
+    var isValid = true;
+    for (var i = 0; i < elements.length; i++) {
+        var element = elements[i];
+        if (!element.checkValidity()) {
+            var errorMessage = element.validationMessage;
+            var errorElementId = element.id + "-error";
+            var errorElement = document.getElementById(errorElementId);
+            if (errorElement) {
+                errorElement.textContent = errorMessage;
+                errorElement.style.display = "block"; // Hata mesajýný görünür hale getir
+            }
+            isValid = false;
+        }
+    }
+
+    if (isValid) {
+        var formData = new FormData(form);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/RegisterAjax");
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                if (response.success === "true") {
+                    // Baþarýlý durumda yapýlacak iþlemler
+                    console.log("Kayýt baþarýlý!");
+                } else {
+                    // Hata durumunda yapýlacak iþlemler
+                    console.log("Kayýt baþarýsýz!");
+                }
+            }
+        };
+        xhr.send(formData);
+    }
+}

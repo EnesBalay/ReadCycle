@@ -17,17 +17,12 @@ builder.Services.AddMvc(config =>
 
 
 builder.Services.AddAuthentication(
-        //CookieAuthenticationDefaults.AuthenticationScheme)
-        //.AddCookie(x =>
-        //{
-        //    x.LoginPath = "/Login/Index";
-        //    x.ExpireTimeSpan = TimeSpan.FromMinutes(15);
-        //    x.Cookie.MaxAge = x.ExpireTimeSpan;
-        //});
         CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(x =>
             {
                 x.LoginPath = "/Login";
+                x.ExpireTimeSpan = TimeSpan.FromMinutes(15);
+                x.Cookie.MaxAge = x.ExpireTimeSpan;
             }
 );
 
@@ -59,5 +54,8 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapHub<ChatHub>("/chatHub");
+
+app.UseStatusCodePagesWithReExecute("/Error/{0}");
+
 
 app.Run();

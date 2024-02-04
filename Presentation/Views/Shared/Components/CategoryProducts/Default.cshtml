@@ -1,23 +1,38 @@
 ﻿@model List<EntityLayer.Concrete.Category>
 
 
-    <h2>Kategoriler</h2>
-    <div class="panel-group category-products" id="accordian">
-        <!--category-productsr-->
-@*         @foreach (var item in Model)
+<h2>Kategoriler</h2>
+<div class="panel-group category-products" id="accordian">
+    <!--category-productsr-->
+    @if (Model?.Count > 0)
+    {
+        @foreach (var item in Model)
         {
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordian" href="/Product/GetAllProduct?category=@item.Id">
+                        <a data-toggle="collapse" data-parent="#accordian" href="/Advert/List?category=@item.Id">
                             @item.Name
                         </a>
                     </h4>
                 </div>
 
             </div>
-        } *@
+        }
 
-    </div><!--/category-products-->
+    }
+    else
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordian" href="#">
+                        Kategori bulunamadı..
+                    </a>
+                </h4>
+            </div>
 
-   
+        </div>
+    }
+
+</div><!--/category-products-->

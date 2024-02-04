@@ -40,7 +40,7 @@ namespace Turtle.Controllers
                 return RedirectToAction("Privacy", "Home", new { area = "Admin" });
 
             }
-            return RedirectToAction("Index", "Home");
+            return View();
         }
 
         [HttpPost]
@@ -54,7 +54,7 @@ namespace Turtle.Controllers
                 {
                     var claims = new List<Claim>
                     {
-                        new Claim(ClaimTypes.Email, p.EmailAddress)
+                        new Claim(ClaimTypes.Name, p.EmailAddress)
                     };
                     var useridentity = new ClaimsIdentity(claims, "a");
                     ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
@@ -68,37 +68,9 @@ namespace Turtle.Controllers
             }
             else
             {
-                if (p.Name != null || p.Password != null)
-                {
-                    UserValidator uv = new UserValidator();
-                    ValidationResult results = uv.Validate(p);
-                    if (results.IsValid)
-                    {
-                        User user = new User();
-                        user.Name = p.Name;
-                        user.EmailAddress = p.EmailAddress;
-                        user.PhoneNumber = p.PhoneNumber;
-                        user.Password = p.Password;
-                        user.AccountType = "User";
-                        userManager.Add(user);
-                        ViewBag.RegisterSuccess = "Kayıt Başarılı";
-                    }
-                    else
-                    {
-                        foreach (var item in results.Errors)
-                        {
-                            ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-                        }
-                        ViewBag.RegisterFailed = "Kayıt Gerçekleşmedi!";
-                    }
-                }
-                else
-                {
-
-                    ViewBag.LoginErrorUser = "Kullanıcı adı ya da şifre hatalı!";
-                    ViewBag.AccountType = "User";
-                    ViewBag.EmailAddress = p.EmailAddress;
-                }
+                ViewBag.LoginErrorUser = "Kullanıcı adı ya da şifre hatalı!";
+                ViewBag.AccountType = "User";
+                ViewBag.EmailAddress = p.EmailAddress;
 
             }
             return View();
