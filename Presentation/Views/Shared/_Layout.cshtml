@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
 	<!-- Required meta tags -->
-	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>ReadCycle - İkinci El Kitap Alım Satım</title>
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -11,6 +11,7 @@
 	<link href="/css/prettyPhoto.css" rel="stylesheet">
 	<link href="/css/price-range.css" rel="stylesheet">
 	<link href="/css/animate.css" rel="stylesheet">
+	<link href="/css/sweetalert2.min.css" rel="stylesheet">
 	<link href="/css/main.css" rel="stylesheet">
 	<link href="/css/responsive.css" rel="stylesheet">
 	<!--[if lt IE 9]>
@@ -31,8 +32,9 @@
     justify-content: space-between;
 ">
 	@await Component.InvokeAsync("Header")
-
-	@RenderBody()
+	<main style="margin:50px auto ;">
+		@RenderBody()
+	</main>
 	@await Component.InvokeAsync("Footer")
 
 	<script src="/js/jquery.js"></script>
@@ -40,6 +42,7 @@
 	<script src="/js/jquery.scrollUp.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/jquery.prettyPhoto.js"></script>
+	<script src="/js/sweetalert2.all.min.js"></script>
 	<script src="/js/main.js"></script>
 	<!-- End custom js for this page -->
 	@await RenderSectionAsync("Scripts", required: false)

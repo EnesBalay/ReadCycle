@@ -2,6 +2,7 @@ using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.Repositories;
 using EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,19 @@ namespace DataAccessLayer.EntityFramework
             using var c = new Context();
             return c.BookAds.FirstOrDefault(x => x.Title == title);
         }
+        public List<BookAd> GetAllByIncludes()
+        {
+            using var c = new Context();
+            return c.BookAds
+                .Include(x => x.Book)
+                .Include(x => x.User)
+                .ToList();
 
+        }
+        public BookAd GetByID(int id)
+        {
+            using var c = new Context();
+            return c.BookAds.Include(x => x.User).Include(x => x.Book).First(x => x.Id == id);
+        }
     }
 }

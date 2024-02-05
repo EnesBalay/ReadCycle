@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BussinessLayer.Concrete
 {
-    internal class WriterManager : IWriterService
+    public class WriterManager : IWriterService
     {
         IWriterDal _writerDal;
         public WriterManager(IWriterDal writerDal)

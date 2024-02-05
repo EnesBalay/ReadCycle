@@ -1,88 +1,101 @@
-﻿@model EntityLayer.Concrete.BookAd
+﻿@model List<EntityLayer.Concrete.Book>
 @{
     ViewData["Title"] = "AddProduct";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Checkout | E-Shopper</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/price-range.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-	<link href="css/main.css" rel="stylesheet">
-	<link href="css/responsive.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->       
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="/images/ico/apple-touch-icon-57-precomposed.png">
-</head><!--/head-->
+@section Scripts{
+    <script>
+        function uploadFile() {
+            var fileInput = document.getElementById('fileInput');
+            var file = fileInput.files[0];
 
-<body>
-	<section id="cart_items">
-		<div class="container">
-			<div class="register-req">
-				<p>İlgili alanları doldurarak yeni bir ilan oluşturabilirsiniz !</p>
-			</div><!--/register-req-->
+            var formData = new FormData();
+            formData.append('file', file);
 
-			<div class="shopper-informations">
-				<div class="row">
-					<div class="col-sm-6 col-sm-offset-3">
-						<div class="bill-to">
-							<div class="form-one">
-								<form>
-									<input type="text" asp-for="Title" placeholder="İlan Başlığı">
-									<input type="text" placeholder="Title">
-									<input type="text" asp-for="User.Name" placeholder="First Name *">
-									<input type="text" placeholder="Last Name *">
-									<input type="text" asp-for="User.PhoneNumber" placeholder="Telefon Numarası ">
-									<input type="text" placeholder="" />
-									
-								</form>
-							</div>
-							
-						</div>
-					</div>
-				</div>
-		<div class="col-12">
-						<div class="order-message">
-							<input type="text" name="AdvertImage2Name" class="form-control file-upload-info" readonly="readonly">
-							<span class="input-group-append">
-								<br />
-								<button class="file-upload-browse btn btn-gradient-primary" type="button">Resim Yükle</button>
-							</span>
-						</div>
-
-					<a class="btn btn-primary" href="">Oluştur</a>
-					</div>
-			</div>
-		</div>
-	</section> <!--/#cart_items-->
-	<style>
-		.form-two, .form-one {
-    float: none;
-    width: 100%;
+            $.ajax({
+                type: 'POST',
+                url: '/Advert/UploadImage',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    console.log('Dosya yükleme başarılı:', response);
+                    if (response.success == false) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Dosya yüklenirken bir hata oluştu!",
+                            text: response.message
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Dosya yükleme başarılı!",
+                            text: response.message
+                        });
+                        var imageUrl = response.url;
+                        document.getElementById('imageUrl').value = imageUrl;
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error('Dosya yükleme hatası:', error);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Dosya yüklenirken bir hata oluştu!",
+                        text: response.message
+                    });
+                }
+            });
+        }
+    </script>
 }
-	</style>
-    <script src="/js/jquery.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery.scrollUp.min.js"></script>
-    <script src="/js/jquery.prettyPhoto.js"></script>
-    <script src="/js/main.js"></script>
-</body>
-</html>
 
 
+<section id="cart_items">
+    <div class="container">
+        <div class="register-req">
+            <p>İlgili alanları doldurarak yeni bir ilan oluşturabilirsiniz !</p>
+        </div><!--/register-req-->
 
+        <div class="shopper-informations">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="bill-to">
+                        <div class="form-one">
+                            <form method="post">
+                                <input type="text" name="Title" placeholder="İlan Başlığı" required>
+                                <input type="number" name="Price" placeholder="Fiyat" required>
+                                <input type="text" name="Description" placeholder="Açıklama" required>
+                                <select name="BookId">
+                                    @foreach (var item in Model)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+
+                                </select>
+                                <br />
+                                <br />
+                                <div class="order-message">
+                                    <input type="file" name="file" id="fileInput" class="form-control file-upload-info">
+                                    <span class="input-group-append">
+                                        <br />
+                                        <button class="file-upload-browse btn btn-gradient-primary" onclick="uploadFile()" type="button">Resim Yükle</button>
+                                    </span>
+                                </div>
+                                <button class="btn btn-primary" type="submit">Oluştur</button>
+                                <input type="text" style="opacity:0" name="Images" id="imageUrl" class="form-control file-upload-info" readonly="readonly">
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> <!--/#cart_items-->
+<style>
+    .form-two, .form-one {
+        float: none;
+        width: 100%;
+    }
+</style>

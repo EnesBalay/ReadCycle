@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BussinessLayer.Concrete
 {
-    internal class BookManager: IBookService
+    public class BookManager: IBookService
     {
         IBookDal _bookDal;
         public BookManager(IBookDal bookDal)

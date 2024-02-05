@@ -1,32 +1,32 @@
 /*price range*/
 
- $('#sl2').slider();
+$('#sl2').slider();
 
-	var RGBChange = function() {
-	  $('#RGB').css('background', 'rgb('+r.getValue()+','+g.getValue()+','+b.getValue()+')')
-	};	
-		
+var RGBChange = function () {
+    $('#RGB').css('background', 'rgb(' + r.getValue() + ',' + g.getValue() + ',' + b.getValue() + ')')
+};
+
 /*scroll to top*/
 
-$(document).ready(function(){
-	$(function () {
-		$.scrollUp({
-	        scrollName: 'scrollUp', // Element ID
-	        scrollDistance: 300, // Distance from top/bottom before showing element (px)
-	        scrollFrom: 'top', // 'top' or 'bottom'
-	        scrollSpeed: 300, // Speed back to top (ms)
-	        easingType: 'linear', // Scroll to top easing (see http://easings.net/)
-	        animation: 'fade', // Fade, slide, none
-	        animationSpeed: 200, // Animation in speed (ms)
-	        scrollTrigger: false, // Set a custom triggering element. Can be an HTML string or jQuery object
-					//scrollTarget: false, // Set a custom target element for scrolling to the top
-	        scrollText: '<i class="fa fa-angle-up"></i>', // Text for element, can contain HTML
-	        scrollTitle: false, // Set a custom <a> title if required.
-	        scrollImg: false, // Set true to use image
-	        activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
-	        zIndex: 2147483647 // Z-Index for the overlay
-		});
-	});
+$(document).ready(function () {
+    $(function () {
+        $.scrollUp({
+            scrollName: 'scrollUp', // Element ID
+            scrollDistance: 300, // Distance from top/bottom before showing element (px)
+            scrollFrom: 'top', // 'top' or 'bottom'
+            scrollSpeed: 300, // Speed back to top (ms)
+            easingType: 'linear', // Scroll to top easing (see http://easings.net/)
+            animation: 'fade', // Fade, slide, none
+            animationSpeed: 200, // Animation in speed (ms)
+            scrollTrigger: false, // Set a custom triggering element. Can be an HTML string or jQuery object
+            //scrollTarget: false, // Set a custom target element for scrolling to the top
+            scrollText: '<i class="fa fa-angle-up"></i>', // Text for element, can contain HTML
+            scrollTitle: false, // Set a custom <a> title if required.
+            scrollImg: false, // Set true to use image
+            activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+            zIndex: 2147483647 // Z-Index for the overlay
+        });
+    });
 });
 
 
@@ -42,28 +42,44 @@ function LoginRegisterSection() {
             var errorElement = document.getElementById(errorElementId);
             if (errorElement) {
                 errorElement.textContent = errorMessage;
-                errorElement.style.display = "block"; // Hata mesajýný görünür hale getir
+                errorElement.style.display = "block";
             }
             isValid = false;
         }
     }
 
     if (isValid) {
-        var formData = new FormData(form);
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/RegisterAjax");
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                var response = JSON.parse(xhr.responseText);
-                if (response.success === "true") {
-                    // Baþarýlý durumda yapýlacak iþlemler
-                    console.log("Kayýt baþarýlý!");
-                } else {
-                    // Hata durumunda yapýlacak iþlemler
-                    console.log("Kayýt baþarýsýz!");
-                }
+        var errors = document.querySelectorAll(".text-danger");
+        errors.forEach((item) => {
+            item.style.display = "none";
+        })
+        let postData = {
+            Name: document.getElementById("Name").value,
+            PhoneNumber: document.getElementById("PhoneNumber").value,
+            EmailAddress: document.getElementById("RegisterEmailAddress").value,
+            Password: document.getElementById("Password").value
+        }
+        $.ajax({
+            type: "POST",
+            url: "/Register/RegisterAjax",
+            data: postData,
+            success: function (response) {
+                Swal.fire({
+                    icon: "success",
+                    title: "Kayýt Gerçekleþti!",
+                    text: "Kayýt baþarýlý bir þekilde gerçekleþti!"
+                });
+                console.log("Sunucudan dönen yanýt: ", response);
+            },
+            error: function (xhr, status, error) {
+                console.error("Bir Hata Oluþtu!");
+                Swal.fire({
+                    icon: "error",
+                    title: "Bir Hata Oluþtu!",
+                    text: "Bir hata oluþtu lütfen tekrar deneyiniz!"
+                });
+                console.error("Hata detayý: ", error);
             }
-        };
-        xhr.send(formData);
+        });
     }
 }

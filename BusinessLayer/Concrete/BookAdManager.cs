@@ -50,5 +50,9 @@ namespace BussinessLayer.Concrete
         {
             _bookAdDal.Update(t);
         }
+        public List<BookAd> GetAllByIncludes()
+        {
+            return _bookAdDal.GetAllByIncludes();
+        }
     }
 }

@@ -6,6 +6,7 @@ namespace DataAccessLayer.Abstract
     {
         public BookAd GetBookAdWithIdentityName(string title);
         public List<BookAd> GetBookAdsBySearch(string search);
+        public List<BookAd> GetAllByIncludes();
 
     }
 }

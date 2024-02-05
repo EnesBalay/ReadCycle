@@ -4,10 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-3">
-            <div class="left-sidebar">
-                @await Component.InvokeAsync("CategoryProducts")
-                @await Component.InvokeAsync("Writers")
-            </div>
+            @await Component.InvokeAsync("LeftSidebar")
         </div>
         <div class="col-sm-9 padding-right">
             @await Component.InvokeAsync("FeaturesItems")
